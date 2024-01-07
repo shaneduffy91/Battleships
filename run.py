@@ -1,3 +1,12 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
+from  random import randint
+
+
+scores = {"computer": 0, "player": 0 }
+
+class Battleship_board
+"""
+Main Battleship board class. This sets the size of the board, 
+the number of ships, the player's name and the type of board 
+(ie. player board or computer). It has a method for adding the
+grid and ships, in addition to printing the battleship board.
+"""
