@@ -29,6 +29,27 @@ def guesses(self, x, y):
     self.guesses.append((x, y))
     self.board[x] [y] = "x"
 
+def random-point(size):
+    """
+    Helper function to return a random
+    integer between 0 and size of board.
+    """
+
+    return randint(0, size -1)
+
+
+def validate_co-ordinates(x, y, board):
+    pass
+
+def populate_board(board):
+    pass
+
+
+def make_guess(board):
+    pass
+
+def play_game(computer_board, player_board):
+    pass
 
 
 
