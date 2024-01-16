@@ -3,7 +3,7 @@ from  random import randint
 
 scores = {"computer": 0, "player": 0 }
 
-class Battleship_board:
+class Battleship_board():
     """
     Main Battleship board class. This sets the size of the board, 
     the number of ships, the player's name and the type of board 
@@ -11,14 +11,20 @@ class Battleship_board:
     grid and ships, in addition to printing the battleship board.
     """
 
-def _init_self(self, size, num_ships, name, type):
-    self.size = size
-    self.board = [["." for x in range(size)] for y in range(size)]
-    self.num_ships = num_ships
-    self.name = name
-    self.type = type
-    self.guesses = []
-    self.ships = []
+    def __init__(self, size, num_ships, name, type):
+        self.size = size
+        self.board = [["." for x in range(size)] for y in range(size)]
+        self.num_ships = num_ships
+        self.name = name
+        self.type = type
+        self.guesses = []
+        self.ships = []
+
+#player_board = Battleship_board("8", "5", "Shane", "game")
+#print(player_board)
+#print(player_board.size)
+#print(player_board.num_ships)
+#print(player_board.name)
 
 
 def print(self):
@@ -29,7 +35,7 @@ def guesses(self, x, y):
     self.guesses.append((x, y))
     self.board[x] [y] = "x"
 
-def random-point(size):
+def random_point(size):
     """
     Helper function to return a random
     integer between 0 and size of board.
@@ -38,11 +44,12 @@ def random-point(size):
     return randint(0, size -1)
 
 
-def validate_co-ordinates(x, y, board):
+def validate_coordinates(x, y, board):
     pass
 
-def populate_board(board):
-    pass
+def create_ships(board):
+    Computer_board = [[''] * 8 for x in range(8)]
+    Player_board = [[''] * 8 for x in range(8)]
 
 
 def make_guess(board):
