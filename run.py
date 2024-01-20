@@ -27,68 +27,85 @@ class Battleship_board():
 #print(player_board.name)
 
 
-def print(self):
-    for row in self.board:
-        print(" ".join(row))
+    def print(self):
+        for row in self.board:
+            print(" ".join(row))
 
-def guesses(self, x, y):
-    self.guesses.append((x, y))
-    self.board[x] [y] = "x"
+    def guesses(self, x, y):
+        self.guesses.append((x, y))
+        self.board[x] [y] = "x"
 
-def random_point(size):
-    """
-    Helper function to return a random
-    integer between 0 and size of board.
-    """
+    def random_point(size):
+        """
+        Helper function to return a random
+        integer between 0 and size of board.
+        """
 
-    return randint(0, size -1)
-
-
-def validate_coordinates(x, y, board):
-    pass
-
-def create_ships(board):
-    Computer_board = [[''] * 8 for x in range(8)]
-    Player_board = [[''] * 8 for x in range(8)]
+        return randint(0, size -1)
 
 
-def make_guess(board):
-    pass
+    def validate_coordinates(x, y, board):
+        row = input("Please enter a ship row")
+        while row not in range(8):
+            print("Please enter a vaild row")
+            row = input("Please enter a ship row")
 
-def play_game(computer_board, player_board):
-    pass
+        column = input("Please enter a ship column")
+        while column not in range(8):
+            print("Please enter a vaild column") 
+            input("Please enter a ship column")     
 
+    def create_ships(board):
+        Computer_board = [[''] * 8 for x in range(8)]
+        Player_board = [[''] * 8 for x in range(8)]
 
-
-
-
-
-def new_game():
-    """
-    Starts a new game. Sets the board size and number of ships, resets the
-    scores and initializes the board.
-    """
-
-    size = 8
-    num_ships = 5
-    scores ["computer"] = 0   
-    scores ["player"] = 0  
-    print("-" * 35)
-    print("Welcome to Mega Battleships")
-    print(f" Board Size: {size}, Number of Ships: {num_ships}")
-    print(" Top left corner is row: 0, col: 0")
-    print("-" * 35)
-    player_name = input("Please enter your name: \n")
-    print("-" * 35)
-
-    computer_board = Battleship_board(size, num_ships, "Computer", type="computer")
-    player_board  = Battleship_board(size, num_ships, player_name, type="player")
-
-    for _ in range(num_ships):
-        populate_board(player_board)
-        populate_board(computer_board)
-
-        play_game(computer_board, player_board)
+        for ship in range(5):
+            ship_row = randint(0,7)
+            ship_column = randint(0,7)
 
 
-new_game()        
+    def make_guess(board):
+       row = x
+       column = y
+
+       x = randint(0,7)
+       y = randint(0,7)
+
+    def play_game(computer_board, player_board):
+        size = 8
+        num_ships = 5
+
+
+
+
+
+
+    def new_game():
+        """
+        Starts a new game. Sets the board size and number of ships, resets the
+        scores and initializes the board.
+        """
+
+        size = 8
+        num_ships = 5
+        scores ["computer"] = 0   
+        scores ["player"] = 0  
+        print("-" * 35)
+        print("Welcome to Mega Battleships")
+        print(f" Board Size: {size}, Number of Ships: {num_ships}")
+        print(" Top left corner is row: 0, col: 0")
+        print("-" * 35)
+        player_name = input("Please enter your name: \n")
+        print("-" * 35)
+
+        computer_board = Battleship_board(size, num_ships, "Computer", type="computer")
+        player_board  = Battleship_board(size, num_ships, player_name, type="player")
+
+        for _ in range(num_ships):
+            populate_board(player_board)
+            populate_board(computer_board)
+
+            play_game(computer_board, player_board)
+
+
+    new_game()        
