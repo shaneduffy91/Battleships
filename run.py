@@ -1,111 +1,121 @@
-from  random import randint
+from random import randint
+import random
+
+# Create grid for the player
+grid_size = 6  # Adjust the grid size as per your preference
+player_grid = [['.' for _ in range(grid_size)] for _ in range(grid_size)]
+
+# Create grid for the computer
+computer_grid = [['.' for _ in range(grid_size)] for _ in range(grid_size)]
+
+def place_ships(grid, num_ships):
+    for _ in range(num_ships):
+        ship_placed = False
+        while not ship_placed:
+            ship_row = random.randint(0, grid_size - 1)
+            ship_col = random.randint(0, grid_size - 1)
+            if grid[ship_row][ship_col] == '.':
+                grid[ship_row][ship_col] = 'S'
+                ship_placed = True
+
+def validate_guess(guess):
+    try:
+        guess = int(guess)
+    except ValueError:
+        return False
+
+    if guess < 0 or guess >= grid_size:
+        return False
+
+    return True
 
 
-scores = {"computer": 0, "player": 0 }
+def play_game():
+    game_over = False
 
-class Battleship_board():
-    """
-    Main Battleship board class. This sets the size of the board, 
-    the number of ships, the player's name and the type of board 
-    (ie. player board or computer). It has a method for adding the
-    grid and ships, in addition to printing the battleship board.
-    """
+    while not game_over:
+        # Print the player's grid
+        print("Player grid:")
+        for row in player_grid:
+            print(' '.join(row))
+        print()
 
-    def __init__(self, size, num_ships, name, type):
-        self.size = size
-        self.board = [["." for x in range(size)] for y in range(size)]
-        self.num_ships = num_ships
-        self.name = name
-        self.type = type
-        self.guesses = []
-        self.ships = []
+        # Ask the player for a guess
+        guess_row = int(input("Enter row guess: "))
+        guess_col = int(input("Enter column guess: "))
 
-#player_board = Battleship_board("8", "5", "Shane", "game")
-#print(player_board)
-#print(player_board.size)
-#print(player_board.num_ships)
-#print(player_board.name)
+        # Validate the player's guess
+        if not validate_guess(guess_row) or not validate_guess(guess_col):
+            print("Invalid guess! Please try again.")
+            continue
 
+        # Check if the player has already guessed the same position
+        if player_grid[guess_row][guess_col] != '.':
+            print("You have already guessed this position! Please try again.")
+            continue
 
-    def print(self):
-        for row in self.board:
-            print(" ".join(row))
+        # Check if player enters a string insted of a number
+        if player_grid[guess_row][guess_col] == " ":
+            print("You must enter a number! Try again.")
 
-    def guesses(self, x, y):
-        self.guesses.append((x, y))
-        self.board[x] [y] = "x"
+        # Check if the player's guess is a hit or a miss
+        if computer_grid[guess_row][guess_col] == 'S':
+            print("You got a hit!")
+            computer_grid[guess_row][guess_col] = 'X'
+        else:
+            print("You missed!")
 
-    def random_point(size):
-        """
-        Helper function to return a random
-        integer between 0 and size of board.
-        """
+        # Check if the game is over
+        player_wins = all(all(cell != 'S' for cell in row) for row in computer_grid)
+        computer_wins = all(all(cell != 'S' for cell in row) for row in player_grid)
 
-        return randint(0, size -1)
+        if player_wins or computer_wins:
+            break
 
+        # Computer's turn
+        print("Computer's turn...")
 
-    def validate_coordinates(x, y, board):
-        row = input("Please enter a ship row")
-        while row not in range(8):
-            print("Please enter a vaild row")
-            row = input("Please enter a ship row")
+        # Generate random guess for the computer
+        computer_guess_row = random.randint(0, grid_size - 1)
+        computer_guess_col = random.randint(0, grid_size - 1)
 
-        column = input("Please enter a ship column")
-        while column not in range(8):
-            print("Please enter a vaild column") 
-            input("Please enter a ship column")     
+        # Validate the computer's guess
+        while player_grid[computer_guess_row][computer_guess_col] != 'O':
+            computer_guess_row = random.randint(0, grid_size - 1)
+            computer_guess_col = random.randint(0, grid_size - 1)
 
-    def create_ships(board):
-        Computer_board = [[''] * 8 for x in range(8)]
-        Player_board = [[''] * 8 for x in range(8)]
+        # Check if the computer's guess is a hit or a miss
+        if player_grid[computer_guess_row][computer_guess_col] == 'S':
+            print("Computer got a hit!")
+            player_grid[computer_guess_row][computer_guess_col] = 'X'
+        else:
+            print("Computer missed!")
 
-        for ship in range(5):
-            ship_row = randint(0,7)
-            ship_column = randint(0,7)
+        # Check if the game is over
+        player_wins = all(all(cell != 'S' for cell in row) for row in computer_grid)
+        computer_wins = all(all(cell != 'S' for cell in row) for row in player_grid)
 
+        if player_wins or computer_wins:
+            break
 
-    def make_guess(board):
-       row = x
-       column = y
-
-       x = randint(0,7)
-       y = randint(0,7)
-
-    def play_game(computer_board, player_board):
-        size = 8
-        num_ships = 5
-
-
-
-
-
-
-    def new_game():
-        """
-        Starts a new game. Sets the board size and number of ships, resets the
-        scores and initializes the board.
-        """
-
-        size = 8
-        num_ships = 5
-        scores ["computer"] = 0   
-        scores ["player"] = 0  
-        print("-" * 35)
-        print("Welcome to Mega Battleships")
-        print(f" Board Size: {size}, Number of Ships: {num_ships}")
-        print(" Top left corner is row: 0, col: 0")
-        print("-" * 35)
-        player_name = input("Please enter your name: \n")
-        print("-" * 35)
-
-        computer_board = Battleship_board(size, num_ships, "Computer", type="computer")
-        player_board  = Battleship_board(size, num_ships, player_name, type="player")
-
-        for _ in range(num_ships):
-            populate_board(player_board)
-            populate_board(computer_board)
-
-            play_game(computer_board, player_board)
+    # Print the final grid of the winner
+    if player_wins:
+        print("Player wins!")
+        print("Final player grid:")
+        for row in player_grid:
+            print(' '.join(row))
+    else:
+        print("Computer wins!")
+        print("Final computer grid:")
+        for row in computer_grid:
+            print(' '.join(row))
 
 
-    new_game()        
+# Player places ships
+place_ships(player_grid, 5)
+
+# Computer places ships
+place_ships(computer_grid, 5)
+
+# Start the game
+play_game()
