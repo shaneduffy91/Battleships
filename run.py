@@ -21,7 +21,23 @@ class Board:
         self.ships = []
 
 
+    def print(self):
+        for row in self.board:
+            print(" ".join(row))
 
+    def guess(self, x, y):
+        self.guesses.append((x, y))
+        self.board[x][y] = "X"
+
+        if (x, y) in self.ships:
+            self.board[x][y] = "#"
+            return "You sunk the battleship!"
+        else:
+            return "You missed the battleship!"
+
+#def populate_board(player_board, computer_board):
+
+    #player_board = self.board(random.randint(0,5))
 # Creating a 5x5  grid using a nested list to represent the game board.
 
 #board = [['.' for _ in range(5)] for _ in range(5)]
