@@ -47,7 +47,7 @@ def random_point(size):
     """
     Helper function to return a random integer between 0 and size.
     """
-    return randint(0, size - 1)
+    return randint(0, self.size - 1)
 
 
 
@@ -63,8 +63,8 @@ def validate_coordinates(x, y, board):
 
 
 def populate_board(self, board):
-    player_board = self.board(random.randint(0, size - 1))
-    computer_board = self.board(random.randint(0, size - 1))
+    player_board = self.board(random.randint(0, self.size - 1))
+    computer_board = self.board(random.randint(0, self.size - 1))
 
 
 
@@ -108,7 +108,7 @@ def new_game():
     player_board = Board(size, num_ships, player_name, type = "player")
 
     for _ in range (num_ships):
-        populate_board(player_board)
+        populate_board(player_board, Board)
         populate_board(computer_board)
 
         play_game(computer_board, player_board)
