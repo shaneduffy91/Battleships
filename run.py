@@ -35,6 +35,14 @@ class Board:
         else:
             return "You missed the battleship!"
 
+    def add_ships(self, x, y, type="computer"):
+        if len(self.ships) >= self.num_ships
+            print("Error: You cannot add any more ships!")
+        else:
+            self.ships.append((x, y))
+            if self.type == "player":
+                self.board[x][y] = "#"
+
 #def populate_board(player_board, computer_board):
 
     #player_board = self.board(random.randint(0,5))
