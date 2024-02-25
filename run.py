@@ -53,11 +53,13 @@ def random_point(size):
 
 def validate_coordinates(x, y, board):
     if make_guess != x:
-        print("Invalid coordinate, please enter a valid row number")
+        print("Invalid coordinate, please enter a valid row number!")
     elif make_guess != y:
-        print("Invalid coordinate, please enter a valid column number")
+        print("Invalid coordinate, please enter a valid column number!")
     elif make_guess != int:
-        print("Invalid coordinate, please enter a valid number")
+        print("Invalid coordinate, please enter a valid number!")
+    elif make_guess == self.guesses:
+        print("Coordinate has already been guessed, please try again!")
 
 
 def populate_board(self, board):
