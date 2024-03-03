@@ -41,7 +41,7 @@ class Board:
         else:
             self.ships.append((x, y))
             if self.type == "player":
-                self.board[x][y] = "#"
+                self.board[x][y] = "S"
 
     def random_point(size):
         """
