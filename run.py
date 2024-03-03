@@ -43,46 +43,54 @@ class Board:
             if self.type == "player":
                 self.board[x][y] = "#"
 
-def random_point(size):
-    """
-    Helper function to return a random integer between 0 and size.
-    """
-    return randint(0, self.size - 1)
+    def random_point(size):
+        """
+        Helper function to return a random integer between 0 and size.
+        """
+        return randint(0, size - 1)
 
 
 
 def validate_coordinates(x, y, board):
-    if make_guess != x:
+    if x < 0 or x >= board.size:
         print("Invalid coordinate, please enter a valid row number!")
-    elif make_guess != y:
+        return False
+    elif y < 0 or y >= board.size:
         print("Invalid coordinate, please enter a valid column number!")
-    elif make_guess != int:
+        return False
+    elif not isinstance(x, int) or not isinstance(y, int):
         print("Invalid coordinate, please enter a valid number!")
-    elif make_guess == self.guesses:
+        return False
+    elif (x, y) in board.guesses:
         print("Coordinate has already been guessed, please try again!")
+        return False
 
 
-def populate_board(self, board):
-    player_board = self.board(random.randint(0, self.size - 1))
-    computer_board = self.board(random.randint(0, self.size - 1))
+def populate_board(board):
+    x = (random.randint(0, board.size - 1))
+    y = (random.randint(0, board.size - 1))
+    board.add_ships(x, y)
 
 
 
 def make_guess(board):
     row = int(input("Enter your guess for the row (0-5): "))
     col = int(input("Enter your guess for the column (0-5): "))
+    if validate_coordinates(row, col, board):
+        result = board.guess(row, col)
+        print(result)
 
 
 
 def play_game(computer_board, player_board):
+    print(player_board)
+    print(computer_board)
+
     while True: 
-        if player_turn:
-            print("Your Turn")
-            make_guess()
-            guess()
-        else:
-            print("Computer's turn")
-            populate_board()
+        print("Your Turn")
+        make_guess(player_board)
+        print("Computer's turn")
+        populate_board(computer_board)
 
 
 
@@ -103,15 +111,16 @@ def new_game():
     print("-" * 35)
     player_name = input("Please Enter Your Name: \n")
     print("-" * 35)
-
+      
     computer_board = Board(size, num_ships, "computer", type = "computer")
     player_board = Board(size, num_ships, player_name, type = "player")
 
     for _ in range (num_ships):
-        populate_board(player_board, Board)
+        populate_board(player_board)
         populate_board(computer_board)
 
         play_game(computer_board, player_board)
 
+   
 
 new_game()
