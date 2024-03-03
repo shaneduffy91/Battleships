@@ -32,6 +32,7 @@ class Board:
         if (x, y) in self.ships:
             self.board[x][y] = "#"
             return "You sunk the battleship!"
+            scores += 1
         else:
             return "You missed the battleship!"
 
