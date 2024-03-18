@@ -43,3 +43,11 @@ Whoever sinks all their opponents ships first, wins the game.
         <li>SCREENSHOT3</li>
         </ul>
 </ul>
+
+
+## Credits
+<ul>
+    <li>Code Institute for the Heroku Deployment Platform.</li>
+    <li>Matt Rudge for his Battleship project example and ReadMe example.</li>
+    <li>Wikipedia for the rules of the game.</li>
+</ul>
