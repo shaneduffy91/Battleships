@@ -69,7 +69,7 @@ def populate_board(board):
     x = (random.randint(0, board.size - 1))
     y = (random.randint(0, board.size - 1))
     board.add_ships(x, y)
-    print(board)
+    board.print()
 
 
 def make_guess(board):
@@ -81,8 +81,8 @@ def make_guess(board):
 
 
 def play_game(computer_board, player_board):
-    print(player_board)
-    print(computer_board)
+    player_board.print()
+    computer_board.print()
 
     while True:
         print("Your Turn")
