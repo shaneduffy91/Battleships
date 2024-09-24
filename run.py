@@ -1,15 +1,46 @@
 from random import randint
 import random
 
-scores = {"computer": 0, "player": 0}
 
+WordList = ['APOLLO', 'BANANA', 'QUEEN', 'SENTIMENT', 'DOUBLE', 'CIRCLE', 'MENTALITY']
+
+WordList.sort()
+
+Choice = random.choice(WordList)
+HiddenChoice = '_ ' * len(Choice)
+
+print(Choice)
+print(HiddenChoice)
+
+
+LetterGuess = input("Guess A Letter ")
+    
+if LetterGuess.isalpha():
+    print("You guessed a letter!")
+else: 
+    print("Invalid input. Please choose a letter")
+
+def check_guess():
+    if LetterGuess in Choice:
+        HiddenChoice = (LetterGuess + '_ ') * len(Choice)
+        print(HiddenChoice)
+    else: 
+        print("________")
+
+check_guess()
+
+
+
+#scores = {"computer": 0, "player": 0}
+
+"""
 
 class Board:
-    """
+   
     Main board class. Sets the board size, the number of ships,
     the player's name and the board type (player board or computer).
     Has methods for adding ships, adding guesses and printing the board.
-    """
+   
 
     def __init__(self, size, num_ships, name, type):
         self.size = size
@@ -44,9 +75,9 @@ class Board:
                 self.board[x][y] = "S"
 
     def random_point(size):
-        """
+       
         Helper function to return a random integer between 0 and size.
-        """
+    
         return randint(0, size - 1)
 
 
@@ -92,10 +123,10 @@ def play_game(computer_board, player_board):
 
 
 def new_game():
-    """
+   
     Starts a new game. Sets a board size and number of ships, resets the scores
     and initializes the board.
-    """
+   
 
     size = 6
     num_ships = 5
@@ -120,3 +151,4 @@ def new_game():
 
 
 new_game()
+"""
