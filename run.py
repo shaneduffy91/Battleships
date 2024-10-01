@@ -16,22 +16,27 @@ def hangman():
         while Lives > 0:
             LetterGuess = input("\nGuess A Letter\n ").upper()
             
-            if LetterGuess in GuessedLetters:
-                print("You've already guessed that letter.")
-            elif LetterGuess in Choice:
+            if LetterGuess in Choice:
                 for index, letter in enumerate(Choice):
                     if letter == LetterGuess:
                         HiddenChoice[index] = LetterGuess
                 print("Correct guess!")
+                print(GuessedLetters)
+            elif LetterGuess in GuessedLetters:
+                print("You've already guessed that letter, please choose again!")
+                print(GuessedLetters)
             elif not LetterGuess.isalpha():
                 print("Invalid input. Please choose a letter.")
+                print(GuessedLetters)
             elif len(LetterGuess) != 1:
                 print("Please guess a single letter.")
+                print(GuessedLetters)
             else:
                 Lives -= 1
                 print(f"Wrong guess! You have {Lives} lives left.")
+                print(GuessedLetters)
 
-            GuessedLetters.append(Choice)
+            GuessedLetters.append(LetterGuess)
             print(" ".join(HiddenChoice))
 
             if '_' not in HiddenChoice:
@@ -42,7 +47,7 @@ def hangman():
         
         PlayAgain = input("Do you want to play again? (Y/N): ").upper()
         if PlayAgain != 'Y':
-            print("Thanks for playing!")
+            print("Thank you for playing Hangman!")
             break
 
 hangman()
