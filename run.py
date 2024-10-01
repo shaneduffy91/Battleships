@@ -1,154 +1,48 @@
-from random import randint
 import random
 
+def hangman():
 
-WordList = ['APOLLO', 'BANANA', 'QUEEN', 'SENTIMENT', 'DOUBLE', 'CIRCLE', 'MENTALITY']
-
-WordList.sort()
-
-Choice = random.choice(WordList)
-HiddenChoice = '_ ' * len(Choice)
-
-print(Choice)
-print(HiddenChoice)
-
-
-LetterGuess = input("Guess A Letter ")
-    
-if LetterGuess.isalpha():
-    print("You guessed a letter!")
-else: 
-    print("Invalid input. Please choose a letter")
-
-def check_guess():
-    if LetterGuess in Choice:
-        HiddenChoice = (LetterGuess + '_ ') * len(Choice)
-        print(HiddenChoice)
-    else: 
-        print("________")
-
-check_guess()
-
-
-
-#scores = {"computer": 0, "player": 0}
-
-"""
-
-class Board:
-   
-    Main board class. Sets the board size, the number of ships,
-    the player's name and the board type (player board or computer).
-    Has methods for adding ships, adding guesses and printing the board.
-   
-
-    def __init__(self, size, num_ships, name, type):
-        self.size = size
-        self.board = [["." for x in range(size)] for y in range(size)]
-        self.num_ships = num_ships
-        self.name = name
-        self.type = type
-        self.guesses = []
-        self.ships = []
-
-    def print(self):
-        for row in self.board:
-            print(" ".join(row))
-
-    def guess(self, x, y):
-        self.guesses.append((x, y))
-        self.board[x][y] = "X"
-
-        if (x, y) in self.ships:
-            self.board[x][y] = "#"
-            return "You sunk the battleship!"
-            scores += 1
-        else:
-            return "You missed the battleship!"
-
-    def add_ships(self, x, y, type="computer"):
-        if len(self.ships) >= self.num_ships:
-            print("Error: You cannot add any more ships!")
-        else:
-            self.ships.append((x, y))
-            if self.type == "player":
-                self.board[x][y] = "S"
-
-    def random_point(size):
-       
-        Helper function to return a random integer between 0 and size.
-    
-        return randint(0, size - 1)
-
-
-def validate_coordinates(x, y, board):
-    if x < 0 or x >= board.size:
-        print("Invalid coordinate, please enter a valid row number!")
-        return False
-    elif y < 0 or y >= board.size:
-        print("Invalid coordinate, please enter a valid column number!")
-        return False
-    elif not isinstance(x, int) or not isinstance(y, int):
-        print("Invalid coordinate, please enter a valid number!")
-        return False
-    elif (x, y) in board.guesses:
-        print("Coordinate has already been guessed, please try again!")
-        return False
-
-
-def populate_board(board):
-    x = (random.randint(0, board.size - 1))
-    y = (random.randint(0, board.size - 1))
-    board.add_ships(x, y)
-    board.print()
-
-
-def make_guess(board):
-    row = int(input("Enter your guess for the row (0-5): "))
-    col = int(input("Enter your guess for the column (0-5): "))
-    if validate_coordinates(row, col, board):
-        result = board.guess(row, col)
-        print(result)
-
-
-def play_game(computer_board, player_board):
-    player_board.print()
-    computer_board.print()
+    WordList = ['APOLLO', 'BANANA', 'QUEEN', 'SENTIMENT', 'DOUBLE', 'CIRCLE', 'MENTALITY']
 
     while True:
-        print("Your Turn")
-        make_guess(player_board)
-        print("Computer's turn")
-        populate_board(computer_board)
+        Choice = random.choice(WordList)
+        HiddenChoice = ['_'] * len(Choice)
+        Lives = 6
+        GuessedLetters = []
 
+        print("\nWelcome to Hangman!")
+        print(" ".join(HiddenChoice))
 
-def new_game():
-   
-    Starts a new game. Sets a board size and number of ships, resets the scores
-    and initializes the board.
-   
+        while Lives > 0:
+            LetterGuess = input("\nGuess A Letter\n ").upper()
+            
+            if LetterGuess in GuessedLetters:
+                print("You've already guessed that letter.")
+            elif LetterGuess in Choice:
+                for index, letter in enumerate(Choice):
+                    if letter == LetterGuess:
+                        HiddenChoice[index] = LetterGuess
+                print("Correct guess!")
+            elif not LetterGuess.isalpha():
+                print("Invalid input. Please choose a letter.")
+            elif len(LetterGuess) != 1:
+                print("Please guess a single letter.")
+            else:
+                Lives -= 1
+                print(f"Wrong guess! You have {Lives} lives left.")
 
-    size = 6
-    num_ships = 5
-    scores["computer"] = 0
-    scores["player"] = 0
-    print("-" * 35)
-    print("Welcome To Mega Battleships")
-    print(f"Board Size: {size}. Number of Ships: {num_ships}")
-    print("Top left corner is row: 0, col: 0")
-    print("-" * 35)
-    player_name = input("Please Enter Your Name: \n")
-    print("-" * 35)
+            GuessedLetters.append(Choice)
+            print(" ".join(HiddenChoice))
 
-    computer_board = Board(size, num_ships, "computer", type ="computer")
-    player_board = Board(size, num_ships, player_name, type ="player")
+            if '_' not in HiddenChoice:
+                print("Congratulations! You guessed the word!")
+                break
+        else:
+            print(f"Game over! The word was '{Choice}'.")
+        
+        PlayAgain = input("Do you want to play again? (Y/N): ").upper()
+        if PlayAgain != 'Y':
+            print("Thanks for playing!")
+            break
 
-    for _ in range (num_ships):
-        populate_board(player_board)
-        populate_board(computer_board)
-
-        play_game(computer_board, player_board)
-
-
-new_game()
-"""
+hangman()

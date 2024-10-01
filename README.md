@@ -1,6 +1,6 @@
-# Project 3 - Mega Battleships
+# Project 3 - Hangman
 
-For my third project with Code Institute, I have created a Battleships game.
+For my third project with Code Institute, I have created a Hangman game.
 
 ## Rules of the Game
 Mega Battleships is based on the classic pen and paper game. For more information 
