@@ -2,51 +2,51 @@ import random
 
 def hangman():
 
-    WordList = ['APOLLO', 'BANANA', 'QUEEN', 'SENTIMENT', 'DOUBLE', 'CIRCLE', 'MENTALITY']
+    word_list = ['APOLLO', 'BANANA', 'QUEEN', 'SENTIMENT', 'DOUBLE', 'CIRCLE', 'MENTALITY']
 
     while True:
-        Choice = random.choice(WordList)
-        HiddenChoice = ['_'] * len(Choice)
-        Lives = 6
-        GuessedLetters = []
+        choice = random.choice(word_list)
+        hidden_choice = ['_'] * len(choice)
+        lives = 6
+        guessed_letters = []
 
         print("\nWelcome to Hangman!")
-        print(" ".join(HiddenChoice))
+        print(" ".join(hidden_choice))
 
-        while Lives > 0:
-            LetterGuess = input("\nGuess A Letter\n ").upper()
+        while lives > 0:
+            letter_guess = input("\nGuess A Letter\n ").upper()
             
-            if LetterGuess in Choice:
-                for index, letter in enumerate(Choice):
-                    if letter == LetterGuess:
-                        HiddenChoice[index] = LetterGuess
+            if letter_guess in choice:
+                for index, letter in enumerate(choice):
+                    if letter == letter_guess:
+                        hidden_choice[index] = letter_guess
                 print("Correct guess!")
-                print(GuessedLetters)
-            elif LetterGuess in GuessedLetters:
+                #print(guessed_letters)
+            elif letter_guess in guessed_letters:
                 print("You've already guessed that letter, please choose again!")
-                print(GuessedLetters)
-            elif not LetterGuess.isalpha():
+                #print(guessed_letters)
+            elif not letter_guess.isalpha():
                 print("Invalid input. Please choose a letter.")
-                print(GuessedLetters)
-            elif len(LetterGuess) != 1:
+                #print(guessed_letters)
+            elif len(letter_guess) != 1:
                 print("Please guess a single letter.")
-                print(GuessedLetters)
+                #print(guessed_letters)
             else:
-                Lives -= 1
-                print(f"Wrong guess! You have {Lives} lives left.")
-                print(GuessedLetters)
+                lives -= 1
+                print(f"Wrong guess! You have {lives} lives left.")
+                #print(guessed_letters)
 
-            GuessedLetters.append(LetterGuess)
-            print(" ".join(HiddenChoice))
+            guessed_letters.append(letter_guess)
+            print(" ".join(hidden_choice))
 
-            if '_' not in HiddenChoice:
+            if '_' not in hidden_choice:
                 print("Congratulations! You guessed the word!")
                 break
         else:
-            print(f"Game over! The word was '{Choice}'.")
+            print(f"Game over! The word was '{choice}'.")
         
-        PlayAgain = input("Do you want to play again? (Y/N): ").upper()
-        if PlayAgain != 'Y':
+        play_again = input("Do you want to play again? (Y/N): ").upper()
+        if play_again != 'Y':
             print("Thank you for playing Hangman!")
             break
 
