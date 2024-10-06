@@ -53,31 +53,31 @@ game, the computer randomly selects a word from a list of improper nouns.
 ## Testing
 I have manually tested this project as follows:
 
-- Ran the game in the terminal, played it a few times and fixed a few bugs (see Bugs below).
-- Passed the code through the PEP8 linter and resolved a few syntax errors.
-- Passed the code through the PEP8 linter a second time and confirmed there are no errors.
-- Tested in my local terminal and Code Institute Heroku terminal.
+* Ran the game in the terminal, played it a few times and fixed a few bugs (see Bugs below).
+* Passed the code through the PEP8 linter and resolved a few syntax errors.
+* Passed the code through the PEP8 linter a second time and confirmed there are no errors.
+* Tested in my local terminal and Code Institute Heroku terminal.
 
 
 ### Bugs
 #### Solved Bugs
 
-- When I built the project, I was getting error messages in relation to the naming of the variables.
+* When I built the project, I was getting error messages in relation to the naming of the variables.
 I renamed all the variables in line with the python naming convention.
-- When I tested the game in the terminal, I discovered that the incorrect validation message printed to the terminal when there was an invalid input. This has been resolved.
+* When I tested the game in the terminal, I discovered that the incorrect validation message printed to the terminal when there was an invalid input. This has been resolved.
 
 #### Remaining Bugs
 
-- No bugs remaining on this project.
+* No bugs remaining on this project.
 
 #### Validator Testing
 
-- Passed the code through the PEP8 linter and no errors returned.
+* Passed the code through the PEP8 linter and no errors returned.
 
 ## Credits
 
-- Code Institute for the Heroku Deployment Platform.
-- Matt Rudge for his ReadMe example.
-- Chris Quinn for his mentoring throughout PP3.
-- Wikipedia for the rules of the game.
+* Code Institute for the Heroku Deployment Platform.
+* Matt Rudge for his ReadMe example.
+* Chris Quinn for his mentoring throughout PP3.
+* Wikipedia for the rules of the game.
 
