@@ -67,6 +67,16 @@ I renamed all the variables in line with the python naming convention.
 
 * Passed the code through the PEP8 linter and no errors returned.
 
+## Deployment
+This project was deployed using the Code Institute mock terminal for Heroku, as follows:
+
+* Fork or clone this repository on Github
+* Create a new Heroku app
+* Set the first buildback to Python
+* Set the second buildback to Node.js
+* Link the Heroku app to the repository
+* Click on Deploy
+
 ## Credits
 
 * Code Institute for the Heroku Deployment Platform.
