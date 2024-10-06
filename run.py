@@ -1,4 +1,13 @@
 import random
+import os
+
+
+def clear_screen():
+    # Clear the terminal screen based on the operating system
+    if os.name == 'nt':  # For Windows
+        os.system('cls')
+    else:  # For macOS and Linux
+        os.system('clear')
 
 
 def hangman():
@@ -11,42 +20,44 @@ def hangman():
         lives = 6
         guessed_letters = []
 
-        print("\nWelcome to Hangman!")
+        print("\nWelcome to Hangman!\n")
         print(" ".join(hidden_choice))
 
         while lives > 0:
             letter_guess = input("\nGuess A Letter\n").upper()
+            clear_screen()  # Clear the screen after each guess
 
             if letter_guess in choice:
                 for index, letter in enumerate(choice):
                     if letter == letter_guess:
                         hidden_choice[index] = letter_guess
-                print("Correct guess!")
+                print("\nCorrect guess!\n")
             elif letter_guess in guessed_letters:
-                print("Letter already guessed, please choose again!")
-
+                print("\nLetter already guessed, please choose again!\n")
             elif not letter_guess.isalpha():
-                print("Invalid input. Please choose a letter.")
-
+                print("\nInvalid input. Please choose a letter.\n")
             elif len(letter_guess) != 1:
-                print("Please guess a single letter.")
-
+                print("\nPlease guess a single letter.\n")
             else:
                 lives -= 1
-                print(f"Wrong guess! You have {lives} lives left.")
+                print(f"\nWrong guess! You have {lives} lives left.\n")
 
             guessed_letters.append(letter_guess)
             print(" ".join(hidden_choice))
 
             if '_' not in hidden_choice:
-                print("Congratulations! You guessed the word!")
+                print("\nCongratulations! You guessed the word!\n")
                 break
         else:
-            print(f"Game over! The word was '{choice}'.")
+            print(f"\nGame over! The word was '{choice}'.\n")
 
-        play_again = input("Do you want to play again? (Y/N): ").upper()
+        play_again = input("\nDo you want to play again? (Y/N): \n").upper()
         if play_again != 'Y':
-            print("Thank you for playing Hangman!")
+            print("\nThank you for playing Hangman!\n")
+            break
+        elif play_again == 'Y':
+            clear_screen()
+            hangman()
             break
 
 

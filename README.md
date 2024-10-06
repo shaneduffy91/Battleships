@@ -26,29 +26,22 @@ game, the computer randomly selects a word from a list of improper nouns.
 
 * View the live project here (https://shaneduffy91.github.io/Hangman/).
 
-<!--<a href="https://shaneduffy91.github.io/Hangman/" target="_blank" aria-label="The live project">View the live project here</a>-->
-
 ## Features
 ### Existing Features
 
+* Random word selection from computer
+    - The computer randomly selects a word from a list of improper nouns
+    - The word is displayed as underscores 
+    - Player tries to guess the word by guessing the letters in the word 
 
-<ul>
-    <li>Random board generation</li>
-        <ul>
-        <li>Five ships are randomly placed on the player's board and the computer's board.</li>
-        <li>The player cannot see the location of the computer's ships.</li>
-        <li>SCREENSHOT</li>
-        </ul>
-    <li>The player can play against the computer.</li>
-    <li>User input is accepted</li>
-    <li>Keeps the scores</li>
-    <li>SCREENSHOT2</li>
-    <li>Input validation and error-checking</li>
-        <ul>
-        <li>The coordinates entered must be numbers.</li>
-        <li>The same coordinates cannot be guessed twice.</li>
-        <li>The coordinates entered cannot be outside the size of the grid.</li>
-        <li>SCREENSHOT3</li>
+* Play against the computer
+* Accepts player input
+* Validates input and checks for errors
+    - You must choose a letter
+    - You cannot guess the same letter twice
+    - You cannot guess more than one letter at one time
+
+* Displays how many lives the player has left, when an incorrect guess is made
 
 ## Testing
 I have manually tested this project as follows:
