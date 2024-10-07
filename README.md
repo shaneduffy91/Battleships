@@ -24,7 +24,7 @@ game, the computer randomly selects a word from a list of improper nouns.
 
 * The player then has a choice if they would like to play again.
 
-* View the live project here (https://shaneduffy91.github.io/Hangman/).
+* View the live project here (https://hangman91-959e0ae64bc0.herokuapp.com/).
 
 ## Features
 ### Existing Features
