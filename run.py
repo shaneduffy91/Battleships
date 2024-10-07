@@ -11,6 +11,13 @@ def clear_screen():
 
 
 def hangman():
+    """
+    Main game function. Randomly chooses a word from a list of words, displays the word
+    as underscores and gives the player 6 lives. The player is asked to guess a letter and then 
+    the input is validated. The game continues until the player guesses the word or loses
+    all 6 lives. A message is printed to the terminal depending on the result and the player is
+    then asked if they would like to play again.
+    """
 
     word_list = ['APOLLO', 'SENTIMENT', 'DOUBLE', 'CIRCLE', 'MENTALITY']
 

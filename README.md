@@ -34,6 +34,8 @@ game, the computer randomly selects a word from a list of improper nouns.
     - The word is displayed as underscores 
     - Player tries to guess the word by guessing the letters in the word 
 
+    ![Screenshot of Welcome to Hangman.](https://github.com/shaneduffy91/Hangman/blob/main/welcomeToHangman.png)
+
 * Play against the computer
 * Accepts player input
 * Validates input and checks for errors
@@ -41,7 +43,13 @@ game, the computer randomly selects a word from a list of improper nouns.
     - You cannot guess the same letter twice
     - You cannot guess more than one letter at one time
 
-* Displays how many lives the player has left, when an incorrect guess is made
+![Screenshot of single letter validation.](https://github.com/shaneduffy91/Hangman/blob/main/singleLetter.png)
+
+![Screenshot of invalid input.](https://github.com/shaneduffy91/Hangman/blob/main/invalidInput.png)
+
+* Displays how many lives the player has left, when an incorrect guess is made.
+
+![Screenshot of wrong guess.](https://github.com/shaneduffy91/Hangman/blob/main/wrongGuess.png)
 
 ## Testing
 I have manually tested this project as follows:
@@ -66,6 +74,7 @@ I renamed all the variables in line with the python naming convention.
 #### Validator Testing
 
 * Passed the code through the PEP8 linter and no errors returned.
+![Screenshot of the PEP8 linter wih no errors returned.](https://github.com/shaneduffy91/Hangman/blob/main/PP3-linter.png)
 
 ## Deployment
 This project was deployed using the Code Institute mock terminal for Heroku, as follows:
